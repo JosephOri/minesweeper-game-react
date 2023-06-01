@@ -1,8 +1,8 @@
 import React from 'react'
 
-function Square() {
+function Square(props) {
   return (
-    <div className='square'></div>
+    <div className='square'>{props.value}</div>
   )
 }
 

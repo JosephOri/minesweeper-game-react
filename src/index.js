@@ -4,11 +4,27 @@ import GameModeForm from './GameModeForm';
 import Square from "./Square";
 
 
+
+
 function App() {
+  const createShuffledMines = (mineShuffle, rows, cols, mines) => {
+    for (let i = 0; i < mines; i++) {
+      mineShuffle.push(99);
+    }
+    for (let i = 0; i < rows * cols - mines; i++) {
+      mineShuffle.push(0);
+    }
+    for (let i = mineShuffle.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [mineShuffle[i], mineShuffle[j]] = [mineShuffle[j], mineShuffle[i]];
+    }
+    console.log(mineShuffle)
+  };
   
   //game board
   const [gameBoard,setGameBoard] = useState([[]])
   const gameModeLogic = (gameMode) =>{
+    // eslint-disable-next-line default-case
     switch(gameMode){
       case "none":
         break;
@@ -24,11 +40,13 @@ function App() {
     }    
   }
   const createGameMatrix = (rows,cols,mines) =>{
+    const mineShuffle = [];
+    createShuffledMines(mineShuffle,rows,cols,mines);
     setGameBoard([[]])
     for (let i = 0; i < rows; i++) {
       const row = [];
         for (let j = 0; j < cols; j++) {
-          row.push(<Square/>);
+          row.push(<Square value={mineShuffle.pop()}/> );
         }
         setGameBoard(gameBoard => [...gameBoard,
          <div className='row'>{row}</div>]);
