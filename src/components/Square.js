@@ -11,10 +11,16 @@ function Square(props) {
     isFlagged ? props.incrementFlagsCount() : props.decrementFlagsCount();
     setIsFlagged(!isFlagged);
   }
+  const handleClick = (e) => {
+    if(isFlagged) return;
+    props.onSquareClick(props.placement.row,props.placement.col,props.isMine);
+
+  };
   return (
       <>
       <div className='square'
-       onContextMenu={handleRightClick}>
+       onContextMenu={handleRightClick}
+      onClick={handleClick}>
         {isFlagged &&  "🚩"} {props.value} </div>
       </>
   )

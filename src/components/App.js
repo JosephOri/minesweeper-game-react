@@ -1,13 +1,12 @@
 import React from "react";
-import GameBoard from "./GameBoard";
+import Game from "./Game";
 
 const App = ()=> {
 
     return (
         <>
             <React.StrictMode>
-            <h1>Minesweeper game</h1>
-            <GameBoard />
+            <Game />
             </React.StrictMode>
         </>
     );
