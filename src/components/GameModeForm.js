@@ -11,7 +11,7 @@ const GameModeForm = (props) => {
       }
   return (
     <form onSubmit={handleSubmit}>
-    <label for="game-mode">Choose game mode</label>
+    <label form="game-mode">Choose game mode</label>
     <select id="game-mode" name="game-mode" onChange={handleChange}>
         <option value="none"></option>
         <option value="beginner">beginner</option>
